@@ -1,12 +1,27 @@
 const answer = document.getElementById("answer");
 const market = document.getElementById("market-change");
+const revealButton = document.getElementById("reveal");
+const result = document.getElementById("result");
+const song = document.getElementById("love-song");
 
-answer.textContent = "...";
-market.textContent = "Checking the markets...";
+revealButton.addEventListener("click", async () => {
 
-fetch("/api/market")
-  .then(response => response.json())
-  .then(data => {
+  // Start the music
+  song.play();
+
+  // Hide the button
+  revealButton.style.display = "none";
+
+  // Reveal the result
+  result.classList.remove("hidden");
+
+  answer.textContent = "...";
+  market.textContent = "Checking the markets...";
+
+  try {
+
+    const response = await fetch("/api/market");
+    const data = await response.json();
 
     const change = data.change;
 
@@ -18,12 +33,13 @@ fetch("/api/market")
       market.textContent = `↓ ${change.toFixed(2)}%`;
     }
 
-  })
-  .catch(error => {
+  } catch (error) {
 
     answer.textContent = "?";
     market.textContent = "Markets unavailable";
 
     console.error(error);
 
-  });
+  }
+
+});

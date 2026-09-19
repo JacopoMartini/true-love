@@ -61,3 +61,48 @@ footer {
   margin-top: 25px;
   opacity: 0.7;
 }
+
+.hidden {
+  display: none;
+}
+
+#reveal {
+  margin-top: 50px;
+  padding: 16px 24px;
+
+  font-family: "League Spartan", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  color: #111;
+  background: transparent;
+
+  border: 1px solid #111;
+  cursor: pointer;
+}
+
+#reveal:hover {
+  background: #111;
+  color: #f5f3ed;
+}
+
+#result {
+  text-align: center;
+}
+
+#result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#result.hidden {
+  display: none;
+}
+
+.market {
+  justify-content: center;
+}
